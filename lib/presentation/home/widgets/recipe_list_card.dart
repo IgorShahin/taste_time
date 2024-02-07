@@ -19,7 +19,6 @@ class RecipeListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseContainer(
-      height: 136,
       child: Row(
         children: [
           Image.asset(
@@ -36,6 +35,8 @@ class RecipeListCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 22,
                       height: 0,
@@ -52,7 +53,8 @@ class RecipeListCard extends StatelessWidget {
                         style: const TextStyle(color: AppColors.primary),
                       )
                     ],
-                  )
+                  ),
+                  const SizedBox(height: 23),
                 ],
               ),
             ),
