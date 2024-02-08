@@ -1,5 +1,7 @@
 {
   "titleApp": "Otus food",
   "titleRecipeCardDefault": "Лосось в соусе терияки",
-  "timeRecipeDefault": "45 минут"
+  "timeRecipeDefault": "45 минут",
+  "textRecipe": "Рецепты",
+  "textProfile": "Профиль"
 }
