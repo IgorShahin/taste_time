@@ -1,28 +1,42 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:taste_time/config/resources/app_assets.dart';
+import 'package:taste_time/config/resources/app_colors.dart';
+import 'package:taste_time/config/routes/router.dart';
 import 'package:taste_time/core/extensions.dart';
 
-import '../widgets/recipe_list_card.dart';
-
+@RoutePage()
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(child: SizedBox(height: 45)),
-            SliverList.builder(
-              itemBuilder: (context, index) => RecipeListCard(
-                image: AppAssets.recipe,
-                title: context.l10n.titleRecipeCardDefault,
-                time: context.l10n.timeRecipeDefault,
-              ),
+      child: AutoTabsRouter(
+        routes: const [
+          RecipeRoute(),
+          ProfileRoute(),
+        ],
+        builder: (context, child) {
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: BottomNavigationBar(
+              selectedItemColor: AppColors.primary,
+              unselectedItemColor: AppColors.hint,
+              currentIndex: context.tabsRouter.activeIndex,
+              onTap: (index) => context.tabsRouter.setActiveIndex(index),
+              items: [
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.local_pizza),
+                  label: context.l10n.textRecipe,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.person),
+                  label: context.l10n.textProfile,
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
