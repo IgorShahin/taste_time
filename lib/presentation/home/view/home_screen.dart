@@ -10,34 +10,32 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: AutoTabsRouter(
-        routes: const [
-          RecipeRoute(),
-          ProfileRoute(),
-        ],
-        builder: (context, child) {
-          return Scaffold(
-            body: child,
-            bottomNavigationBar: BottomNavigationBar(
-              selectedItemColor: AppColors.primary,
-              unselectedItemColor: AppColors.hint,
-              currentIndex: context.tabsRouter.activeIndex,
-              onTap: (index) => context.tabsRouter.setActiveIndex(index),
-              items: [
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.local_pizza),
-                  label: context.l10n.textRecipe,
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.person),
-                  label: context.l10n.textProfile,
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+    return AutoTabsRouter(
+      routes: const [
+        RecipeRoute(),
+        LoginRoute(),
+      ],
+      builder: (context, child) {
+        return Scaffold(
+          body: child,
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: AppColors.primary,
+            unselectedItemColor: AppColors.hint,
+            currentIndex: context.tabsRouter.activeIndex,
+            onTap: (index) => context.tabsRouter.setActiveIndex(index),
+            items: [
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.local_pizza),
+                label: context.l10n.titleNavigationRecipes,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.person),
+                label: context.l10n.titleNavigationLogin,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

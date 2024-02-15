@@ -5,14 +5,9 @@ import 'package:taste_time/config/routes/router.dart';
 
 import '../config/resources/app_theme.dart';
 
-class AppRoot extends StatefulWidget {
-  const AppRoot({super.key});
+class AppRoot extends StatelessWidget {
+  AppRoot({super.key});
 
-  @override
-  State<AppRoot> createState() => _AppRootState();
-}
-
-class _AppRootState extends State<AppRoot> {
   final _router = AppRouter();
 
   @override

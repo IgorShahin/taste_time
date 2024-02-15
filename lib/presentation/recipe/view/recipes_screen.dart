@@ -1,4 +1,4 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:taste_time/core/extensions.dart';
 
@@ -13,17 +13,20 @@ class RecipeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        const SliverToBoxAdapter(child: SizedBox(height: 45)),
-        SliverList.builder(
-          itemBuilder: (context, index) => RecipeListCard(
-            image: AppAssets.recipe,
-            title: context.l10n.titleRecipeCardDefault,
-            time: context.l10n.timeRecipeDefault,
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          const SliverToBoxAdapter(child: SizedBox(height: 45)),
+          SliverList.builder(
+            itemBuilder: (context, index) => RecipeListCard(
+              image: AppAssets.recipe,
+              title: context.l10n.titleRecipeCardDefault,
+              time: context.l10n.timeRecipeDefault,
+              onTap: () => context.router.navigateNamed("recipe_item"),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
